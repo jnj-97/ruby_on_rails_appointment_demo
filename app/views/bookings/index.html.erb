@@ -1,0 +1,7 @@
+<h2>Booking List</h2>
+<%= @bookings.each do |booking|%>
+<%=booking.start_data%>
+<%=booking.end_data%>
+<%=booking.description%>
+<%=booking.room.name%>
+<%end%>
