@@ -1,7 +1,10 @@
 <h2>Booking List</h2>
 <%= @bookings.each do |booking|%>
+<div>
 <%=booking.start_data%>
 <%=booking.end_data%>
 <%=booking.description%>
-<%=booking.room.name%>
+<%=link_to booking.room.name,booking.room%>
+</div>
 <%end%>
+<%=link_to "Book an appointment",new_booking_path%>

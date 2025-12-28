@@ -1,5 +1,6 @@
 class BookingsController < ApplicationController
-    before_action :set_booking, only: %i[show edit update]
+    before_action :set_booking, only: %i[show edit update destroy]
+    before_action :authenticate_user!
     def index
         @bookings=Booking.all
     end
@@ -12,13 +13,22 @@ class BookingsController < ApplicationController
 
     end
 
+    def destroy
+    @booking.destroy
+    respond_to do |format|
+        format.html {redirect_to bookings_url,notice: "Booking was successfully deleted"}
+    end
+end
+
     def update
     respond_to do |format|
-        if @booking.save(booking_params)
+        if @booking.update(booking_params)
             format.html {redirect_to booking_url(@booking), notice: "Booking Updated Successfully"}
         else
             format.html {render :edit, staus: :unprocessable_entity}
     end
+end
+end
     
     def new
     @booking=Booking.new
@@ -42,7 +52,7 @@ class BookingsController < ApplicationController
     end
 
     def booking_params
-        params.require(:booking).permit(:room_id,:start_data,:end_data,:description)
+        params.require(:booking).permit(:room_id,:start_data,:end_data,:description,:user_id)
     end
 
 end
