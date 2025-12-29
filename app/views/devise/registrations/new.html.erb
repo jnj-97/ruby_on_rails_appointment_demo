@@ -1,29 +1,70 @@
-<h2>Sign up</h2>
+<h2 style="
+  margin-bottom:1.25rem;
+  font-size:1.6rem;
+  font-weight:600;
+">
+  Sign up
+</h2>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+  <div class="field" style="margin-bottom:1rem;">
+    <%= f.label :email, style: "display:block; margin-bottom:0.4rem; color:#cbd5f5;" %>
+    <%= f.email_field :email, autofocus: true, autocomplete: "email", style: "
+      width:100%;
+      padding:0.6rem 0.75rem;
+      border-radius:8px;
+      border:1px solid #1f2937;
+      background:#020617;
+      color:#e5e7eb;
+    " %>
   </div>
 
-  <div class="field">
-    <%= f.label :password %>
+  <div class="field" style="margin-bottom:1rem;">
+    <%= f.label :password, style: "display:block; margin-bottom:0.4rem; color:#cbd5f5;" %>
     <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
+      <em style="font-size:0.85rem; color:#94a3b8;">
+        (<%= @minimum_password_length %> characters minimum)
+      </em>
     <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
+    <%= f.password_field :password, autocomplete: "new-password", style: "
+      width:100%;
+      padding:0.6rem 0.75rem;
+      border-radius:8px;
+      border:1px solid #1f2937;
+      background:#020617;
+      color:#e5e7eb;
+      margin-top:0.4rem;
+    " %>
   </div>
 
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+  <div class="field" style="margin-bottom:1.25rem;">
+    <%= f.label :password_confirmation, style: "display:block; margin-bottom:0.4rem; color:#cbd5f5;" %>
+    <%= f.password_field :password_confirmation, autocomplete: "new-password", style: "
+      width:100%;
+      padding:0.6rem 0.75rem;
+      border-radius:8px;
+      border:1px solid #1f2937;
+      background:#020617;
+      color:#e5e7eb;
+    " %>
   </div>
 
   <div class="actions">
-    <%= f.submit "Sign up" %>
+    <%= f.submit "Sign up", style: "
+      width:100%;
+      padding:0.65rem 1rem;
+      border-radius:10px;
+      border:1px solid rgba(56,189,248,0.6);
+      background:rgba(56,189,248,0.15);
+      color:#38bdf8;
+      font-weight:600;
+      cursor:pointer;
+    " %>
   </div>
 <% end %>
 
-<%= render "devise/shared/links" %>
+<div style="margin-top:1.25rem;">
+  <%= render "devise/shared/links" %>
+</div>

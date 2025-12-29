@@ -1,6 +1,37 @@
-<% @rooms.each do |room| %>
-<p><%=link_to room.name, room%>
-</p><p> Capacity: 
-<%=room.capacity%></p>
-<% end%>
-<%= link_to "Create Room", new_room_path %>
+<div style="
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(260px,1fr));
+  gap:1.25rem;
+  margin-bottom:2rem;
+">
+  <% @rooms.each do |room| %>
+    <div style="
+      padding:1.25rem;
+      border-radius:16px;
+      background:rgba(15,23,42,0.9);
+      border:1px solid #1f2937;
+      transition:transform .15s ease, box-shadow .15s ease;
+    " onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 10px 25px rgba(0,0,0,.35)'"
+       onmouseout="this.style.transform='none';this.style.boxShadow='none'">
+
+      <p style="margin:0 0 .5rem 0;font-weight:600;font-size:1.1rem;">
+        <%= link_to room.name, room, style: "color:#60a5fa;text-decoration:none;" %>
+      </p>
+
+      <p style="margin:0;color:#9ca3af;font-size:.95rem;">
+        Capacity: <strong style="color:#e5e7eb;"><%= room.capacity %></strong>
+      </p>
+    </div>
+  <% end %>
+</div>
+
+<%= link_to "Create Room", new_room_path, style: "
+  display:inline-block;
+  padding:.6rem 1.1rem;
+  border-radius:999px;
+  background:#3b82f6;
+  color:white;
+  font-weight:600;
+  text-decoration:none;
+  box-shadow:0 8px 20px rgba(59,130,246,.35);
+" %>

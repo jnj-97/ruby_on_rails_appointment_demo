@@ -1,5 +1,51 @@
-<%=@booking.start_data%>
-<%=@booking.end_data%>
-<%=@booking.description%>
-<%=@booking.room.name%>
-<%=button_to "Cancel Booking", @booking, method: :delete%>
+<div style="
+  max-width:700px;
+  margin:3rem auto;
+  padding:2rem;
+  background:rgba(15,23,42,0.9);
+  border:1px solid #1f2937;
+  border-radius:20px;
+">
+  <h2 style="
+    margin-bottom:1.5rem;
+    font-size:1.75rem;
+    font-weight:700;
+    color:#e5e7eb;
+  ">
+    Booking Details
+  </h2>
+
+  <div style="display:grid; gap:0.75rem; color:#cbd5f5;">
+    <div>
+      <strong style="color:#e5e7eb;">Start:</strong>
+      <%= @booking.start_data %>
+    </div>
+
+    <div>
+      <strong style="color:#e5e7eb;">End:</strong>
+      <%= @booking.end_data %>
+    </div>
+
+    <div>
+      <strong style="color:#e5e7eb;">Description:</strong>
+      <%= @booking.description %>
+    </div>
+
+    <div>
+      <strong style="color:#e5e7eb;">Room:</strong>
+      <%= @booking.room.name %>
+    </div>
+  </div>
+
+  <div style="margin-top:2rem;">
+    <%= button_to "Cancel Booking", @booking, method: :delete, style: "
+      background:#ef4444;
+      color:white;
+      border:none;
+      padding:0.6rem 1.2rem;
+      border-radius:10px;
+      font-weight:600;
+      cursor:pointer;
+    " %>
+  </div>
+</div>

@@ -1,11 +1,67 @@
-<%=@room.name%>
-<%=@room.capacity%>
-<%= button_to "Delete",@room, method: :delete %>
+<div style="
+  max-width:720px;
+  margin:2rem auto;
+  padding:1.5rem;
+  background:rgba(15,23,42,0.9);
+  border-radius:20px;
+  border:1px solid #1f2937;
+">
 
-<h2>Bookings</h2>
-<% @room.bookings.each do |booking|%>
-<%=booking.start_data%>
-<%=booking.end_data%>
-<%=booking.description%>
-<%=link_to "Booking",booking%>
-<%end%>
+  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1.25rem;">
+    <div>
+      <h1 style="margin:0;font-size:1.6rem;font-weight:700;color:#e5e7eb;">
+        <%= @room.name %>
+      </h1>
+      <p style="margin:.25rem 0 0;color:#9ca3af;">
+        Capacity: <strong style="color:#e5e7eb;"><%= @room.capacity %></strong>
+      </p>
+    </div>
+
+    <%= button_to "Delete", @room, method: :delete, style: "
+      background:#dc2626;
+      color:white;
+      border:none;
+      padding:.5rem 1rem;
+      border-radius:999px;
+      font-weight:600;
+      cursor:pointer;
+      box-shadow:0 6px 16px rgba(220,38,38,.35);
+    " %>
+  </div>
+
+  <h2 style="
+    margin:1.5rem 0 1rem;
+    font-size:1.2rem;
+    font-weight:600;
+    color:#e5e7eb;
+  ">
+    Bookings
+  </h2>
+
+  <div style="display:flex;flex-direction:column;gap:.75rem;">
+    <% @room.bookings.each do |booking| %>
+      <div style="
+        padding:1rem;
+        border-radius:14px;
+        background:#020617;
+        border:1px solid #1f2937;
+      ">
+        <p style="margin:0 0 .25rem;color:#9ca3af;font-size:.85rem;">
+          <%= booking.start_data %> → <%= booking.end_data %>
+        </p>
+
+        <p style="margin:0 0 .5rem;color:#e5e7eb;font-size:.95rem;">
+          <%= booking.description %>
+        </p>
+
+        <%= link_to "View Booking", booking, style: "
+          font-size:.85rem;
+          color:#60a5fa;
+          text-decoration:none;
+          font-weight:500;
+        " %>
+      </div>
+    <% end %>
+  </div>
+
+</div>

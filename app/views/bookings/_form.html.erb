@@ -1,31 +1,85 @@
-<%=form_with(model: @booking) do |form|%>
-<div>
-<%= form.label :start,style: "display:block"%>
-<%=form.datetime_field :start_data%>
-</div>
+<%= form_with(model: @booking) do |form| %>
+  <div style="
+    max-width:520px;
+    margin:2rem auto;
+    padding:1.75rem;
+    background:rgba(15,23,42,0.9);
+    border-radius:20px;
+    border:1px solid #1f2937;
+  ">
 
-<div>
-<%= form.label :start,style: "display:block"%>
-<%=form.datetime_field :start_data%>
-</div>
+    <h2 style="
+      margin:0 0 1.25rem;
+      color:#e5e7eb;
+      font-size:1.4rem;
+      font-weight:700;
+    ">
+      Create Booking
+    </h2>
 
-<div>
-<%= form.label :description,style: "display:block"%>
-<%=form.text_field :description%>
-</div>
+    <div style="margin-bottom:1rem;">
+      <%= form.label :start, style: "display:block;margin-bottom:.25rem;color:#9ca3af;font-size:.85rem;" %>
+      <%= form.datetime_field :start_data, style: "
+        width:100%;
+        padding:.55rem .75rem;
+        border-radius:10px;
+        border:1px solid #1f2937;
+        background:#020617;
+        color:#e5e7eb;
+      " %>
+    </div>
 
-<div>
-<%= form.label :room,style: "display:block"%>
-<%=form.collection_select :room_id, Room.all,:id, :name %>
-</div>
+    <div style="margin-bottom:1rem;">
+      <%= form.label :end, style: "display:block;margin-bottom:.25rem;color:#9ca3af;font-size:.85rem;" %>
+      <%= form.datetime_field :start_data, style: "
+        width:100%;
+        padding:.55rem .75rem;
+        border-radius:10px;
+        border:1px solid #1f2937;
+        background:#020617;
+        color:#e5e7eb;
+      " %>
+    </div>
 
-<div>
+    <div style="margin-bottom:1rem;">
+      <%= form.label :description, style: "display:block;margin-bottom:.25rem;color:#9ca3af;font-size:.85rem;" %>
+      <%= form.text_field :description, style: "
+        width:100%;
+        padding:.55rem .75rem;
+        border-radius:10px;
+        border:1px solid #1f2937;
+        background:#020617;
+        color:#e5e7eb;
+      " %>
+    </div>
 
-<%=form.hidden_field :user_id, value: current_user.id %>
-</div>
+    <div style="margin-bottom:1.25rem;">
+      <%= form.label :room, style: "display:block;margin-bottom:.25rem;color:#9ca3af;font-size:.85rem;" %>
+      <%= form.collection_select :room_id, Room.all, :id, :name, {}, style: "
+        width:100%;
+        padding:.55rem .75rem;
+        border-radius:10px;
+        border:1px solid #1f2937;
+        background:#020617;
+        color:#e5e7eb;
+      " %>
+    </div>
 
-<div>
-<%=form.submit%>
-</div>
+    <%= form.hidden_field :user_id, value: current_user.id %>
 
-<%end%>
+    <div>
+      <%= form.submit "Save Booking", style: "
+        width:100%;
+        padding:.6rem 1rem;
+        border-radius:999px;
+        border:none;
+        background:linear-gradient(135deg,#3b82f6,#6366f1);
+        color:white;
+        font-weight:600;
+        cursor:pointer;
+        box-shadow:0 8px 20px rgba(59,130,246,.35);
+      " %>
+    </div>
+
+  </div>
+<% end %>

@@ -11,29 +11,115 @@
 
     <%= yield :head %>
 
-    <%# Enable PWA manifest for installable apps (make sure to enable in config/routes.rb too!) %>
-    <%#= tag.link rel: "manifest", href: pwa_manifest_path(format: :json) %>
-
     <link rel="icon" href="/icon.png" type="image/png">
     <link rel="icon" href="/icon.svg" type="image/svg+xml">
     <link rel="apple-touch-icon" href="/icon.png">
 
-    <%# Includes all stylesheet files in app/assets/stylesheets %>
     <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
   </head>
 
-  <body>
-    <p class="notice"><%=notice%></p>
-    <p class="alert"><%=alert%></p>
-    <%if !user_signed_in?%>
-    <%=link_to "Sign In", new_user_session_path%>
-    <%=link_to "Sign up", new_user_registration_path%>
-    <%else%>
-    <%=button_to "Sign Out", destroy_user_session_path, method: :delete%>
-    <%=link_to "Rooms", rooms_path%>
-    <%=link_to "Bookings", bookings_path%>
-    <%end%>
-    <%= yield %>
+  <body style="
+    margin:0;
+    min-height:100vh;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: linear-gradient(135deg, #0f172a, #020617);
+    color:#e5e7eb;
+  ">
+
+    <div style="
+      max-width:960px;
+      margin:0 auto;
+      padding:1.25rem;
+    ">
+
+      <% if notice.present? %>
+        <div style="
+          margin:0.75rem 0;
+          padding:0.75rem 1rem;
+          border-radius:8px;
+          background:rgba(74,222,128,0.15);
+          color:#4ade80;
+          border:1px solid rgba(74,222,128,0.35);
+        ">
+          <%= notice %>
+        </div>
+      <% end %>
+
+      <% if alert.present? %>
+        <div style="
+          margin:0.75rem 0;
+          padding:0.75rem 1rem;
+          border-radius:8px;
+          background:rgba(248,113,113,0.15);
+          color:#f87171;
+          border:1px solid rgba(248,113,113,0.35);
+        ">
+          <%= alert %>
+        </div>
+      <% end %>
+
+      <div style="
+        display:flex;
+        gap:0.75rem;
+        align-items:center;
+        margin-bottom:1.5rem;
+        flex-wrap:wrap;
+      ">
+        <% if !user_signed_in? %>
+          <%= link_to "Sign In", new_user_session_path, style: "
+            padding:0.5rem 0.9rem;
+            border-radius:8px;
+            border:1px solid #1f2937;
+            color:#38bdf8;
+            text-decoration:none;
+          " %>
+
+          <%= link_to "Sign up", new_user_registration_path, style: "
+            padding:0.5rem 0.9rem;
+            border-radius:8px;
+            border:1px solid #1f2937;
+            color:#38bdf8;
+            text-decoration:none;
+          " %>
+        <% else %>
+          <%= button_to "Sign Out", destroy_user_session_path, method: :delete, style: "
+            padding:0.5rem 0.9rem;
+            border-radius:8px;
+            background:rgba(248,113,113,0.15);
+            border:1px solid rgba(248,113,113,0.4);
+            color:#f87171;
+            cursor:pointer;
+          " %>
+
+          <%= link_to "Rooms", rooms_path, style: "
+            padding:0.5rem 0.9rem;
+            border-radius:8px;
+            border:1px solid #1f2937;
+            color:#38bdf8;
+            text-decoration:none;
+          " %>
+
+          <%= link_to "Bookings", bookings_path, style: "
+            padding:0.5rem 0.9rem;
+            border-radius:8px;
+            border:1px solid #1f2937;
+            color:#38bdf8;
+            text-decoration:none;
+          " %>
+        <% end %>
+      </div>
+
+      <div style="
+        background:rgba(255,255,255,0.03);
+        border:1px solid #1f2937;
+        border-radius:12px;
+        padding:1.5rem;
+        box-shadow:0 10px 30px rgba(0,0,0,0.35);
+      ">
+        <%= yield %>
+      </div>
+
+    </div>
   </body>
 </html>

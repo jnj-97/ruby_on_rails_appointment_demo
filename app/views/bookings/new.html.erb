@@ -1,2 +1,19 @@
-<h2>Create Booking</h2>
-<%=render "form", booking: @booking%>
+<div style="
+  max-width:520px;
+  margin:2.5rem auto;
+  padding:1.75rem;
+  background:rgba(15,23,42,0.9);
+  border-radius:20px;
+  border:1px solid #1f2937;
+">
+  <h2 style="
+    margin:0 0 1.25rem;
+    color:#e5e7eb;
+    font-size:1.5rem;
+    font-weight:700;
+  ">
+    Create Booking
+  </h2>
+
+  <%= render "form", booking: @booking %>
+</div>

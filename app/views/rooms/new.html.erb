@@ -1,2 +1,18 @@
-<h1>New Room</h1>
-<%= render "form" , room: @room%>
+<h2 style="
+  margin-bottom:1rem;
+  font-size:1.5rem;
+  font-weight:700;
+  color:#e5e7eb;
+">
+  New Room
+</h2>
+
+<div style="
+  max-width:420px;
+  padding:1.5rem;
+  border-radius:14px;
+  background:rgba(15,23,42,0.9);
+  border:1px solid #1f2937;
+">
+  <%= render "form", room: @room %>
+</div>

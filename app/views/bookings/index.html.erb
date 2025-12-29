@@ -1,10 +1,61 @@
-<h2>Booking List</h2>
-<%= @bookings.each do |booking|%>
-<div>
-<%=booking.start_data%>
-<%=booking.end_data%>
-<%=booking.description%>
-<%=link_to booking.room.name,booking.room%>
+<div style="
+  max-width:900px;
+  margin:2.5rem auto;
+  padding:1.5rem;
+">
+  <h2 style="
+    margin-bottom:1.5rem;
+    font-size:1.75rem;
+    font-weight:700;
+    color:#e5e7eb;
+  ">
+    Booking List
+  </h2>
+
+  <div style="
+    display:grid;
+    gap:1rem;
+  ">
+    <% @bookings.each do |booking| %>
+      <div style="
+        padding:1.25rem;
+        border-radius:16px;
+        background:rgba(15,23,42,0.9);
+        border:1px solid #1f2937;
+        display:flex;
+        justify-content:space-between;
+        align-items:center;
+        gap:1rem;
+      ">
+        <div style="color:#cbd5f5;">
+          <div style="font-weight:600; color:#e5e7eb;">
+            <%= booking.description %>
+          </div>
+          <div style="font-size:0.9rem; opacity:0.8;">
+            <%= booking.start_data %> → <%= booking.end_data %>
+          </div>
+        </div>
+
+        <div>
+          <%= link_to booking.room.name, booking.room, style: "
+            color:#60a5fa;
+            font-weight:600;
+            text-decoration:none;
+          " %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+
+  <div style="margin-top:2rem;">
+    <%= link_to "Book an appointment", new_booking_path, style: "
+      display:inline-block;
+      padding:0.6rem 1.2rem;
+      background:#3b82f6;
+      color:white;
+      border-radius:10px;
+      font-weight:600;
+      text-decoration:none;
+    " %>
+  </div>
 </div>
-<%end%>
-<%=link_to "Book an appointment",new_booking_path%>
